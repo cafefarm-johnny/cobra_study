@@ -1,7 +1,4 @@
-package cobra_sample
-
-import "cobra_sample/cmd"
+package main
 
 func main() {
-    cmd.Excute()
 }
