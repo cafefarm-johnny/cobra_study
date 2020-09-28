@@ -11,10 +11,13 @@ import (
 
 var cfgFile string
 
+const version = "0.0.1"
+
 var rootCmd = &cobra.Command{
-	Use:   "Johnny",
-	Short: "This is short comment.",
-	Long:  `This is long comment.`,
+	Use:     "Johnny",
+	Short:   "This is short comment.",
+	Long:    `This is long comment.`,
+	Version: version, // 버전 플래그(--version)
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(cfgFile)
 	},

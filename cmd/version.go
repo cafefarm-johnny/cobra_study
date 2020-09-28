@@ -21,9 +21,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-const version = "0.0.1"
-
-// versionCmd represents the version command
+// 버전 커맨드 생성 ex) go run ./main.go version         / 버전 플래그(--version)와 다르게 커맨드로 구분됨
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: version,
