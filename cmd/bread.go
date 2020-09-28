@@ -21,5 +21,7 @@ var product string
 
 func init() {
 	rootCmd.AddCommand(breadCmd)
-	breadCmd.PersistentFlags().StringVar(&product, "product", "cream bread", "A help for product.")
+	//breadCmd.PersistentFlags().StringVar(&product, "product", "cream bread", "구매하고자 하는 제품명을 입력해주세요.")
+	breadCmd.Flags().StringVar(&product, "product", "cream bread", "구매하고자 하는 제품명을 입력해주세요. (필수)")
+	breadCmd.MarkFlagRequired("product")
 }
