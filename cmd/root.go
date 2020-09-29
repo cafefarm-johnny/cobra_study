@@ -40,6 +40,7 @@ func init() {
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
+// viper 라이브러리를 이용해 외부 설정 파일 로딩처리
 func initConfig() {
 	if cfgFile != "" {
 		viper.SetConfigFile(cfgFile)
