@@ -24,6 +24,8 @@ Go Cobra CLI 라이브러리 예제를 보며 만들어 본 간단한 파일 커
 
 ### File Command
 
+1. cobra_sample file --help
+
 #### List Up
 
 1. cobra_sample file list --path [path]
