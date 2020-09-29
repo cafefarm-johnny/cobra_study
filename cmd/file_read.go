@@ -13,7 +13,7 @@ var readCmd = &cobra.Command{
 	Use:     "read",
 	Short:   "File reading command",
 	Long:    "Which reading for files",
-	Example: "file read -p ~/downloads/test.txt",
+	Example: "file read --path [path with filename]",
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if !fileExist(filePath) {
 			return fmt.Errorf("\"%s\" is directory or there is no file", filePath)
@@ -29,7 +29,7 @@ var readCmd = &cobra.Command{
 func init() {
 	fileCmd.AddCommand(readCmd)
 
-	readCmd.PersistentFlags().StringVarP(&filePath, "url", "u", delimiter.Blank, "file path for reading")
+	readCmd.PersistentFlags().StringVarP(&filePath, "path", "p", delimiter.Blank, "file path for reading")
 }
 
 func readFile(path string) error {
