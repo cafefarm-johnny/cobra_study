@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"cobra_sample/utils/delimiter"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -8,7 +9,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var filePath string
 var readCmd = &cobra.Command{
 	Use:     "read",
 	Short:   "File reading command",
@@ -18,11 +18,10 @@ var readCmd = &cobra.Command{
 		if !fileExist(filePath) {
 			return fmt.Errorf("\"%s\" is directory or there is no file", filePath)
 		}
-		err := readFile()
+		err := readFile(filePath)
 		if err != nil {
 			return errors.New("cannot open file")
 		}
-
 		return nil
 	},
 }
@@ -30,11 +29,11 @@ var readCmd = &cobra.Command{
 func init() {
 	fileCmd.AddCommand(readCmd)
 
-	readCmd.PersistentFlags().StringVarP(&filePath, "url", "u", "", "file path for reading")
+	readCmd.PersistentFlags().StringVarP(&filePath, "url", "u", delimiter.Blank, "file path for reading")
 }
 
-func readFile() error {
-	bytes, err := ioutil.ReadFile(filePath)
+func readFile(path string) error {
+	bytes, err := ioutil.ReadFile(path)
 
 	if err != nil {
 		return err

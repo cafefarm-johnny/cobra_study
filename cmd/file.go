@@ -1,12 +1,14 @@
 package cmd
 
 import (
+	"cobra_sample/utils/delimiter"
 	"fmt"
 	"path/filepath"
 
 	"github.com/spf13/cobra"
 )
 
+var filePath string
 var fileCmd = &cobra.Command{
 	Use:     "file",
 	Short:   "File handling command",
@@ -19,8 +21,17 @@ var fileCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(fileCmd)
-	//fileCmd.Flags().StringVarP(&filePath, "read", "r", "", "read for file")
-	//fileCmd.Flags().StringVarP(nil, "list", "l", "", "list up files")
+}
+
+func isDir(path string) bool {
+	_, file := filepath.Split(path)
+	if len(file) < 1 {
+		return false
+	}
+	if filepath.Ext(file) != delimiter.Blank {
+		return false
+	}
+	return true
 }
 
 func fileExist(path string) bool {
@@ -28,7 +39,7 @@ func fileExist(path string) bool {
 	if len(file) < 1 {
 		return false
 	}
-	if filepath.Ext(file) == "" {
+	if filepath.Ext(file) == delimiter.Blank {
 		return false
 	}
 	return true
