@@ -15,7 +15,7 @@ var cfgFile string
 const version = "0.0.1"
 
 var rootCmd = &cobra.Command{
-	Use:     "Johnny",
+	Use:     "cobra_sample",
 	Short:   "This is short comment.",
 	Long:    `This is long comment.`,
 	Version: version, // 버전 플래그(--version)
