@@ -12,6 +12,11 @@ import (
 
 var cfgFile string
 
+var (
+	host string
+	port int
+)
+
 const version = "0.0.1"
 
 var rootCmd = &cobra.Command{
@@ -40,6 +45,8 @@ func Execute() {
 func init() {
 	cobra.OnInitialize(initConfig)
 
+	// 외부 설정 파일 로드 플래그
+	// ex) --config ./myConfig.cli.yml
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "(test)default config", "config file (default is $HOME/.cli.yaml)")
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
@@ -62,8 +69,13 @@ func initConfig() {
 	viper.AutomaticEnv()
 
 	err := viper.ReadInConfig()
-
 	if err == nil {
 		fmt.Println("Using Config File: ", viper.ConfigFileUsed())
 	}
+
+	// config 파일 내 요소 접근하기
+	host = viper.GetString("server.host")
+	port = viper.GetInt("server.port")
+	fmt.Println("> host : ", host)
+	fmt.Println("> port : ", port)
 }
