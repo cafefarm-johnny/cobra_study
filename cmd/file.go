@@ -18,7 +18,7 @@ var fileCmd = &cobra.Command{
 		fmt.Println("fileCmd > PersistentPreRun > args : ", args)
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		action()
+		subCmdAction()
 	},
 }
 
@@ -26,7 +26,7 @@ func init() {
 	rootCmd.AddCommand(fileCmd)
 }
 
-func action() {
+func subCmdAction() {
 	fmt.Println("What are you want?")
 	fmt.Println("1. list up")
 	fmt.Println("2. copy")
@@ -48,7 +48,7 @@ func action() {
 		break
 	default:
 		fmt.Println("what?")
-		action()
+		subCmdAction()
 		break
 	}
 }
@@ -61,6 +61,7 @@ func listUpAction() {
 	var flag string
 	fmt.Scanln(&flag)
 
+	// file list --path ... 커맨드로 rootCmd(메인 함수)를 실행
 	rootCmd.SetArgs([]string{"file", "list", fmt.Sprintf("--path=%s", flag)})
 	rootCmd.Execute()
 }
