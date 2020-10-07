@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"cobra_sample/utils/delimiter"
+	"cobra_sample/utils/separate"
 	"fmt"
 	"os"
 
@@ -53,7 +53,7 @@ func init() {
 
 // viper 라이브러리를 이용해 외부 설정 파일 로딩처리
 func initConfig() {
-	if cfgFile != delimiter.Blank {
+	if cfgFile != separate.Blank {
 		viper.SetConfigFile(cfgFile)
 	} else {
 		home, err := homedir.Dir()

@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"cobra_sample/utils/delimiter"
 	"cobra_sample/utils/nums"
+	"cobra_sample/utils/separate"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -33,7 +33,7 @@ var listCmd = &cobra.Command{
 func init() {
 	fileCmd.AddCommand(listCmd)
 
-	listCmd.PersistentFlags().StringVarP(&filePath, "path", "p", delimiter.Blank, "file path for list up")
+	listCmd.PersistentFlags().StringVarP(&filePath, "path", "p", separate.Blank, "file path for list up")
 }
 
 func listUp(path string) error {
@@ -44,9 +44,9 @@ func listUp(path string) error {
 	}
 
 	for _, file := range files {
-		printFormat := "%-100v %-30v %v " + delimiter.LineAlignment
-		size := strconv.FormatInt(file.Size(), nums.Decimal) + delimiter.Byte
-		time := strings.Replace(file.ModTime().Format(time.RFC3339), delimiter.Time, delimiter.WhiteSpace, 1)
+		printFormat := "%-100v %-30v %v " + separate.LineAlignment
+		size := strconv.FormatInt(file.Size(), nums.Decimal) + separate.Byte
+		time := strings.Replace(file.ModTime().Format(time.RFC3339), separate.Time, separate.WhiteSpace, 1)
 
 		fmt.Printf(printFormat, file.Name(), size, time)
 	}

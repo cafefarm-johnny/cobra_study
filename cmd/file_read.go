@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"cobra_sample/utils/delimiter"
+	"cobra_sample/utils/separate"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -29,7 +29,7 @@ var readCmd = &cobra.Command{
 func init() {
 	fileCmd.AddCommand(readCmd)
 
-	readCmd.PersistentFlags().StringVarP(&filePath, "path", "p", delimiter.Blank, "file path for reading")
+	readCmd.PersistentFlags().StringVarP(&filePath, "path", "p", separate.Blank, "file path for reading")
 }
 
 func readFile(path string) error {

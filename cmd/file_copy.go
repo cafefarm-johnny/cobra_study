@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"cobra_sample/utils/delimiter"
+	"cobra_sample/utils/separate"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -48,8 +48,8 @@ var copyCmd = &cobra.Command{
 func init() {
 	fileCmd.AddCommand(copyCmd)
 
-	copyCmd.PersistentFlags().StringVarP(&copyPaths[0], "from", "f", delimiter.Blank, "file path of from")
-	copyCmd.PersistentFlags().StringVarP(&copyPaths[1], "to", "t", delimiter.Blank, "file path of to")
+	copyCmd.PersistentFlags().StringVarP(&copyPaths[0], "from", "f", separate.Blank, "file path of from")
+	copyCmd.PersistentFlags().StringVarP(&copyPaths[1], "to", "t", separate.Blank, "file path of to")
 }
 
 func copyFile(from string, to string) error {

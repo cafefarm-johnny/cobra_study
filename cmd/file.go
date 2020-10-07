@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"cobra_sample/utils/delimiter"
+	"cobra_sample/utils/separate"
 	"fmt"
 	"path/filepath"
 
@@ -97,7 +97,7 @@ func isDir(path string) bool {
 	if len(file) < 1 {
 		return false
 	}
-	if filepath.Ext(file) != delimiter.Blank {
+	if filepath.Ext(file) != separate.Blank {
 		return false
 	}
 	return true
@@ -108,7 +108,7 @@ func fileExist(path string) bool {
 	if len(file) < 1 {
 		return false
 	}
-	if filepath.Ext(file) == delimiter.Blank {
+	if filepath.Ext(file) == separate.Blank {
 		return false
 	}
 	return true

@@ -1,4 +1,4 @@
-package delimiter
+package separate
 
 const (
 	Blank         = ""
