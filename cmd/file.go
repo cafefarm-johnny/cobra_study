@@ -14,13 +14,84 @@ var fileCmd = &cobra.Command{
 	Short:   "File handling command",
 	Long:    "Which reading, writing for files",
 	Example: "file --help",
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		fmt.Println("fileCmd > PersistentPreRun > args : ", args)
+	},
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Please enter command.")
+		action()
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(fileCmd)
+}
+
+func action() {
+	fmt.Println("What are you want?")
+	fmt.Println("1. list up")
+	fmt.Println("2. copy")
+	fmt.Println("3. read")
+	fmt.Print("> ")
+
+	var input int
+	fmt.Scanln(&input)
+
+	switch input {
+	case 1:
+		listUpAction()
+		break
+	case 2:
+		copyAction()
+		break
+	case 3:
+		fmt.Println("reading...")
+		readAction()
+		break
+	default:
+		fmt.Println("what?")
+		break
+	}
+}
+
+func listUpAction() {
+	fmt.Println("Please enter directory path")
+	fmt.Println("ex) /Users/johnnyuhm/Downloads")
+	fmt.Print("> ")
+
+	var flag string
+	fmt.Scanln(&flag)
+
+	rootCmd.SetArgs([]string{"file", "list", fmt.Sprintf("--path=%s", flag)})
+	rootCmd.Execute()
+}
+
+func copyAction() {
+	fmt.Println("Please enter copy path \"[from] [to]\"")
+	fmt.Println("ex) [from] /Users/johnnyuhm/Downloads/canvas.html")
+	fmt.Println("ex) [to] /Users/johnnyuhm/Downloads/(copied)canvas.html")
+	fmt.Print("> ")
+
+	var from string
+	var to string
+	fmt.Scan(&from, &to)
+
+	fmt.Println("from : ", from)
+	fmt.Println("to : ", to)
+
+	rootCmd.SetArgs([]string{"file", "copy", fmt.Sprintf("--from=%s", from), fmt.Sprintf("--to=%s", to)})
+	rootCmd.Execute()
+}
+
+func readAction() {
+	fmt.Println("Please enter read file path")
+	fmt.Println("ex) /Users/johnnyuhm/Downloads/canvas.html")
+	fmt.Println("> ")
+
+	var path string
+	fmt.Scan(&path)
+
+	rootCmd.SetArgs([]string{"file", "read", fmt.Sprintf("--path=%s", path)})
+	rootCmd.Execute()
 }
 
 func isDir(path string) bool {

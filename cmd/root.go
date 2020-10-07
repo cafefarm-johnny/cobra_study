@@ -19,6 +19,9 @@ var rootCmd = &cobra.Command{
 	Short:   "This is short comment.",
 	Long:    `This is long comment.`,
 	Version: version, // 버전 플래그(--version)
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		fmt.Println("rootCmd > persistentPreRun > args : ", args)
+	},
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(cfgFile)
 	},

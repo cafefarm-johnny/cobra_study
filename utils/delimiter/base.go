@@ -3,6 +3,7 @@ package delimiter
 const (
 	Blank         = ""
 	WhiteSpace    = " "
+	Comma         = ","
 	LineAlignment = "\n"
 	Tab           = "\t"
 	Time          = "T"
