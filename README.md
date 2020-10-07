@@ -22,7 +22,7 @@ Go Cobra CLI 라이브러리 예제를 보며 만들어 본 간단한 파일 커
 
 1. cobra_sample --help
 
-### Config Command
+### Config
 
 1. cobra_sample --config [path of CLI config file]
 
