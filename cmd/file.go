@@ -44,11 +44,11 @@ func action() {
 		copyAction()
 		break
 	case 3:
-		fmt.Println("reading...")
 		readAction()
 		break
 	default:
 		fmt.Println("what?")
+		action()
 		break
 	}
 }
