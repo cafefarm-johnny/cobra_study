@@ -75,9 +75,6 @@ func copyAction() {
 	var to string
 	fmt.Scan(&from, &to)
 
-	fmt.Println("from : ", from)
-	fmt.Println("to : ", to)
-
 	rootCmd.SetArgs([]string{"file", "copy", fmt.Sprintf("--from=%s", from), fmt.Sprintf("--to=%s", to)})
 	rootCmd.Execute()
 }
