@@ -86,7 +86,7 @@ func setOptions(pw progress.Writer) {
 
 func setStyle(pw progress.Writer) {
 	pw.Style().Colors.Percent = text.Colors{text.FgRed}
-	pw.Style().Colors.Stats = text.Colors{text.FgWhite}
+	pw.Style().Colors.Time = text.Colors{text.FgWhite}
 	pw.Style().Colors.Value = text.Colors{text.FgGreen}
 
 	pw.Style().Options.SnipIndicator = "..." // 메세지 width 가 상황에 따라 잘리는 경우 대체 표현 문자
